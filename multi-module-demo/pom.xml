@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.springframework</groupId>
+    <artifactId>multi-module_demo</artifactId>
+    <version>0.1.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>library</module>
+        <module>application</module>
+    </modules>
+    
+	<build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.11</source>
+          <target>1.11</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+          <groupId>external.atlassian.jgitflow</groupId>
+          <artifactId>jgitflow-maven-plugin</artifactId>
+          <version>1.0-m5.1</version>
+          <configuration>
+              <!-- For specific plugin configuration options, 
+              see the Goals documentation page -->
+          <flowInitContext>
+			 <masterBranchName>release</masterBranchName>
+			 <developBranchName>master</developBranchName>
+			 <featureBranchPrefix>feature/</featureBranchPrefix>
+			 <releaseBranchPrefix>release/</releaseBranchPrefix>
+			 <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+         </flowInitContext>
+         <autoVersionSubmodules>true</autoVersionSubmodules>
+         <noDeploy>true</noDeploy>
+         <scmCommentPrefix>[RELEASE]</scmCommentPrefix>
+          </configuration>
+      </plugin>
+    </plugins>
+	
+	</build>
+</project>
